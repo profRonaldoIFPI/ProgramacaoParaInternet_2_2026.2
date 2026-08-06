@@ -1,9 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1 id="titulo">Título Original</h1>
+    <button id="botao">Clique aqui</button>
+
+    <script>
+      const titulo = document.getElementById("titulo");
+      const btn = document.querySelector("#botao");
+
+      btn.addEventListener("click", () => {
+        //função anônima ou arrow function
+        titulo.textContent = "Título modificado!";
+        console.log("Título modificado");
+      });
+    </script>
+  </body>
 </html>
