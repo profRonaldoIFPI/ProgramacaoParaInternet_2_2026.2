@@ -1,0 +1,12 @@
+{
+  "name": "aula_1008",
+  "version": "1.0.0",
+  "description": "Exemplo da aula de 10/08",
+  "license": "ISC",
+  "author": "Ronaldo Borges",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
