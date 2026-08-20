@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 
 const router = express.Router();
 // trata de tudo sobre o usuário
@@ -17,4 +17,6 @@ router.get("/", (req, res) => {
   res.send("raiz em usuários");
 });
 
-module.exports = router;
+export default router; //ES Module
+
+// module.exports = router; //CommonJS
