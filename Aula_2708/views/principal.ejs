@@ -13,16 +13,16 @@
         <th>Opções</th>
       </thead>
       <tbody>
-        <% tarefas.forEach(tarefa => { %> <!-- inicio do for -->
+        <% tarefas.forEach((tarefa, indice) => { %> <!-- inicio do for -->
           <tr>
             <td> <%= tarefa.descricao %> </td>
             <td> <%= tarefa.status %> </td>
             <td>
                 <% if(tarefa.status == "Pendente"){ %>
-                    <a>Concluir</a>
+                    <a href="/concluirTarefa/<%=indice%>">Concluir</a>
                 <% } %>
                 <% if(tarefa.status == "Concluído") { %>
-                    <a>Remover</a>
+                    <a href="/removerTarefa/<%=indice%>">Remover</a>
                 <% } %>
             </td>
               </tr>
