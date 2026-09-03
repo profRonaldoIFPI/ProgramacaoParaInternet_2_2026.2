@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ToDoList</title>
+  </head>
+  <body>
+    <h1>Lista de Tarefas</h1>
+    <table>
+      <thead>
+        <th>Terefa</th>
+        <th>Status</th>
+        <th>Opções</th>
+      </thead>
+      <tbody>
+        <% tarefas.forEach((tarefa, indice) => { %> <!-- inicio do for -->
+          <tr>
+            <td> <%= tarefa.descricao %> </td>
+            <td> <%= tarefa.status %> </td>
+            <td>
+                <% if(tarefa.status == "Pendente"){ %>
+                    <a href="tarefas/concluir/<%=indice%>">Concluir</a>
+                <% } %>
+                <% if(tarefa.status == "Concluído") { %>
+                    <a href="tarefas/remover/<%=indice%>">Remover</a>
+                <% } %>
+            </td>
+              </tr>
+            <% }); %> <!-- final do for -->
+      </tbody>
+    </table>
+    <br />
+    <a href="tarefas/nova">Nova tarefa</a>
+  </body>
+</html>

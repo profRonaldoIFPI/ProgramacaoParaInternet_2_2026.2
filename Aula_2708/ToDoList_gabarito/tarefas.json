@@ -1,0 +1,14 @@
+[
+  {
+    "descricao": "Estudar EJS",
+    "status": "Concluído"
+  },
+  {
+    "descricao": "Estudar Outros Template Engine",
+    "status": "Pendente"
+  },
+  {
+    "descricao": "Estudar Status Code",
+    "status": "Pendente"
+  }
+]

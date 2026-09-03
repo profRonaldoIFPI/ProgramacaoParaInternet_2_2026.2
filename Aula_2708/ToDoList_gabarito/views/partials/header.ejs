@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDoList</title>
+  <!-- Tailwind CSS via CDN (Opção 2 - Prototipagem/Aula) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans antialiased">
+  <!-- Barra de Navegação Semântica -->
+  <header class="bg-indigo-600 text-white shadow-md">
+    <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Navegação Principal">
+      <a href="/" class="text-xl font-bold tracking-tight hover:text-indigo-100 transition">
+        📝 ToDoList
+      </a>
+      <ul class="flex gap-4 text-sm font-medium">
+        <li><a href="/" class="hover:text-indigo-200 transition">Início</a></li>
+        <li><a href="/tarefas" class="hover:text-indigo-200 transition">Tarefas</a></li>
+        <li><a href="/tarefas/nova" class="hover:text-indigo-200 transition">Nova Tarefa</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal Semântico -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">

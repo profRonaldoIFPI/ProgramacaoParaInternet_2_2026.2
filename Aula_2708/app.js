@@ -4,6 +4,7 @@ import fs from "fs"; //file system
 const app = express();
 const PORT = 8080;
 const ARQUIVO = "tarefas.json";
+
 const carregaListaTarefas = () => {
   try {
     const arquivo = fs.readFileSync(ARQUIVO);
@@ -13,6 +14,7 @@ const carregaListaTarefas = () => {
     return [];
   }
 };
+
 const salvarListaTarefas = (tarefas) => {
   fs.writeFileSync(ARQUIVO, JSON.stringify(tarefas, null, 2));
 };

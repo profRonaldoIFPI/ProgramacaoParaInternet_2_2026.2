@@ -1,0 +1,75 @@
+<%- include('partials/header') %>
+
+<section aria-labelledby="titulo-tarefas">
+  <header class="flex items-center justify-between mb-6">
+    <hgroup>
+      <h1 id="titulo-tarefas" class="text-2xl font-bold text-slate-800">Minhas Tarefas</h1>
+      <p class="text-sm text-slate-500">Gerencie e acompanhe o status das suas atividades</p>
+    </hgroup>
+    <a 
+      href="/tarefas/nova" 
+      class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm px-4 py-2 rounded-lg shadow-sm transition inline-flex items-center gap-1.5"
+    >
+      <span>+</span> Nova Tarefa
+    </a>
+  </header>
+
+  <figure class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider">
+          <th scope="col" class="py-3.5 px-6">Tarefa</th>
+          <th scope="col" class="py-3.5 px-6">Status</th>
+          <th scope="col" class="py-3.5 px-6 text-right">Opções</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-200 text-sm">
+        <% if (tarefas.length === 0) { %>
+          <tr>
+            <td colspan="3" class="py-8 px-6 text-center text-slate-500">
+              Nenhuma tarefa cadastrada no momento. <a href="/tarefas/nova" class="text-indigo-600 hover:underline">Cadastre a primeira!</a>
+            </td>
+          </tr>
+        <% } %>
+        <% tarefas.forEach((tarefa, indice) => { %>
+          <tr class="hover:bg-slate-50/75 transition">
+            <td class="py-4 px-6 font-medium text-slate-800 <%= tarefa.status === 'Concluído' ? 'line-through text-slate-400' : '' %>">
+              <%= tarefa.descricao %>
+            </td>
+            <td class="py-4 px-6">
+              <% if (tarefa.status === 'Concluído') { %>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                  ✓ Concluído
+                </span>
+              <% } else { %>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                  ⏳ Pendente
+                </span>
+              <% } %>
+            </td>
+            <td class="py-4 px-6 text-right space-x-2">
+              <% if (tarefa.status === 'Pendente') { %>
+                <a 
+                  href="/tarefas/concluir/<%= indice %>" 
+                  class="inline-block bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-medium px-3 py-1.5 rounded-md border border-emerald-200 transition"
+                >
+                  Concluir
+                </a>
+              <% } %>
+              <% if (tarefa.status === 'Concluído') { %>
+                <a 
+                  href="/tarefas/remover/<%= indice %>" 
+                  class="inline-block bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1.5 rounded-md border border-rose-200 transition"
+                >
+                  Remover
+                </a>
+              <% } %>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </figure>
+</section>
+
+<%- include('partials/footer') %>
