@@ -1,9 +1,9 @@
 import fs from "fs";
-const ARQUIVO = "tarefas.json";
+const ARQUIVO = new URL("./tarefas.json", import.meta.url);
 
 export const carregaListaTarefas = () => {
   try {
-    const arquivo = fs.readFileSync(ARQUIVO);
+    const arquivo = fs.readFileSync(ARQUIVO, "utf8");
     return JSON.parse(arquivo);
   } catch (err) {
     console.log("Deu ruim.");
@@ -17,7 +17,7 @@ export const salvarListaTarefas = (tarefas) => {
 
 export const novaTarefa = (tarefa) => {
   let tarefas = carregaListaTarefas();
-  tarefas.push(novaTarefa);
+  tarefas.push(tarefa);
   salvarListaTarefas(tarefas);
   return tarefa;
 };

@@ -26,6 +26,6 @@ export const concluirTarefa = (req, res) => {
 
 export const excluirTarefa = (req, res) => {
   const indice = req.params.indice;
-
+  //TODO
   res.status(201).redirect("/tarefas");
 };
