@@ -90,7 +90,7 @@ git pull origin main
 
 ---
 
-## 👨‍🏫 Docente
+## Docente
 
 - **Professor:** Ronaldo Borges
 - **Instituição:** Instituto Federal do Piauí (IFPI) - Campus Floriano
