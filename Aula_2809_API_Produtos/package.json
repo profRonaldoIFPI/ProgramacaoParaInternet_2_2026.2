@@ -1,0 +1,22 @@
+{
+  "name": "aula_2809_api_produtos",
+  "version": "1.0.0",
+  "description": "API Rest com banco de dados",
+  "keywords": [
+    "API;",
+    "PostgreSQL;"
+  ],
+  "license": "MIT",
+  "author": "Ronaldo Borges",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --whatch app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1"
+  }
+}
