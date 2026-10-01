@@ -5,7 +5,7 @@ const router = Router();
 //C
 router.post("/", produtosController.create);
 //R
-router.get("/", produtosController.retreave); //lista tudo
+router.get("/", produtosController.retreave); //listar tudo
 router.get("/:id", produtosController.read);
 //U
 router.put("/:id", produtosController.update);

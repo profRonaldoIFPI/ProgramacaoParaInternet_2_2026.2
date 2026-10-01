@@ -8,6 +8,7 @@ export const retreave = (req, res) => {
     res.status(200).json(produtos);
 
 };
-export const read = (req, res) => {};
-export const update = (req, res) => {};
-export const delete = (req, res) => {};
+//TODO...
+// export const read = (req, res) => {};
+// export const update = (req, res) => {};
+// export const delete = (req, res) => {};
