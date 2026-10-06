@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nome": "Tecladdo Gammer",
+    "preco": 230.5,
+    "categoria": "informática"
+  },
+  {
+    "id": 2,
+    "nome": "Tecladdo Gammer",
+    "preco": 230.5,
+    "categoria": "informática"
+  },
+  {
+    "id": 3,
+    "nome": "Tecladdo Gammer",
+    "preco": 230.5,
+    "categoria": "informática"
+  }
+]

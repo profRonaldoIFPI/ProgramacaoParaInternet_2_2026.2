@@ -1,8 +1,9 @@
 import fs from "fs";
+import { resourceUsage } from "process";
 
 const carregarProdutos = async ()=>{
     try{
-        let produtos = await fs.readFile("produtos.json", "utf-8");
+        let produtos = await fs.promises.readFile("produtos.json", "utf-8");
         produtos = JSON.parse(produtos);
         return produtos;
     } catch(e){
@@ -13,7 +14,7 @@ const carregarProdutos = async ()=>{
 
 const salvarProdutos = async (produtos) => {
     try{
-        await fs.writeFile("produtos.json", JSON.stringify(produtos,null,2));
+        await fs.promises.writeFile("produtos.json", JSON.stringify(produtos,null,2));
         return "Arquivo salvo.";
     }catch(e){
         console.log("[Salvar arquivo] Algo deu errado: "+ e);
@@ -23,12 +24,22 @@ const salvarProdutos = async (produtos) => {
 //CRUD 
 export const create = async (produto) => {
     let produtos = await carregarProdutos();
-    produtos.push(produto);
+    let idNovo;
+    if(produtos.length>0){
+         idNovo = produtos[produtos.length-1].id+1; //gambiarra
+    } else {
+        idNovo = 1;
+    }
+    const produtoNovo =  {
+            id: idNovo,
+            nome: produto.nome,
+            preco: produto.preco,
+            categoria: produto.categoria
+        };
+    console.log(produtoNovo);
+    produtos.push(produtoNovo);
     salvarProdutos(produtos);
     return produto;
-/* poderja ser:
-    return await salvarProdutos(carregarProdutos().push(produto));
-*/
 };
 
 export const retreave = async () =>{
@@ -39,4 +50,30 @@ export const read = async (id) => {
     const produtos = await carregarProdutos();
     const idNum = parseInt(id,10); //id numericom com no máximo 10 digitos
     return produtos.find((p)=> p.id === idNum) | [];
+};
+
+export const update = async (id, nome, preco, catecoria) => {
+    const produtos = await carregarProdutos();
+    const idNum = parseInt(id,10); 
+    const index = produtos.findIndex((p)=> p.id === idNum);
+    if (index ===-1) { //não tem produto com este id
+        return []; 
+    }
+    produtos[index] = {
+        id: idNum,
+        nome: nome,
+        preco: preco,
+        catecoria: catecoria 
+    }
+    salvarProdutos(produtos);
+    return produtos[index];  
+};
+
+export const remove = async (id) => {
+    const produtos = await carregarProdutos();
+    const idNum = parseInt(id);
+    const index = produtos.findIndex((p)=> p.id === idNum);
+    const produtoRemovido = produtos.splice(index, 1);
+    salvarProdutos(produtos);
+    return produtoRemovido;
 };
