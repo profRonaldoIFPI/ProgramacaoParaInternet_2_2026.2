@@ -1,9 +1,11 @@
 import fs from "fs";
-import { resourceUsage } from "process";
+
+//resolve o contexto do arquivo
+const arquivo = new URL("./produtos.json",import.meta.url);
 
 const carregarProdutos = async ()=>{
     try{
-        let produtos = await fs.promises.readFile("produtos.json", "utf-8");
+        let produtos = await fs.promises.readFile(arquivo, "utf-8");
         produtos = JSON.parse(produtos);
         return produtos;
     } catch(e){
@@ -14,7 +16,7 @@ const carregarProdutos = async ()=>{
 
 const salvarProdutos = async (produtos) => {
     try{
-        await fs.promises.writeFile("produtos.json", JSON.stringify(produtos,null,2));
+        await fs.promises.writeFile(arquivo, JSON.stringify(produtos,null,2));
         return "Arquivo salvo.";
     }catch(e){
         console.log("[Salvar arquivo] Algo deu errado: "+ e);
@@ -25,6 +27,7 @@ const salvarProdutos = async (produtos) => {
 export const create = async (produto) => {
     let produtos = await carregarProdutos();
     let idNovo;
+
     if(produtos.length>0){
          idNovo = produtos[produtos.length-1].id+1; //gambiarra
     } else {
@@ -49,7 +52,11 @@ export const retreave = async () =>{
 export const read = async (id) => {
     const produtos = await carregarProdutos();
     const idNum = parseInt(id,10); //id numericom com no máximo 10 digitos
-    return produtos.find((p)=> p.id === idNum) | [];
+    const produto = produtos.find((p)=> p.id === idNum);
+    if (produto == null){
+        return [];
+    }
+    return produto;
 };
 
 export const update = async (id, nome, preco, catecoria) => {

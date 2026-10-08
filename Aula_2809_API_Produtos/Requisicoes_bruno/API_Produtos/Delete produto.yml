@@ -1,0 +1,16 @@
+info:
+  name: Delete produto
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: http://localhost:8080/produtos/5
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

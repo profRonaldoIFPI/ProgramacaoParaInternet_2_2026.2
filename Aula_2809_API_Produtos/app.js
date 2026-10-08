@@ -1,4 +1,5 @@
 import express from "express";
+import "dotenv/config";
 import produtosRouter from "./routes/produtosRoutes.js"
 
 const app = express();
@@ -16,5 +17,5 @@ app.get("/", (req, res)=>{
 app.use("/produtos", produtosRouter);
 
 app.listen(process.env.PORT, (err)=>{
-    console.log("Servidor online!");
+    console.log("Servidor online!" );
 });
