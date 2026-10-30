@@ -16,5 +16,11 @@
     "nome": "PC Gamer",
     "preco": 4000,
     "categoria": "informática"
+  },
+  {
+    "id": 5,
+    "nome": "Notebook gamer",
+    "preco": 5000,
+    "categoria": "informática"
   }
 ]
