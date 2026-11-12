@@ -11,8 +11,8 @@ http:
     data: |-
       {
         "nome": "Igor",
-        "idade": 20,
-        "email": "igor@mail.com"
+        "idade": 21,
+        "email": "igor2@mail.com"
       }
   auth: inherit
 

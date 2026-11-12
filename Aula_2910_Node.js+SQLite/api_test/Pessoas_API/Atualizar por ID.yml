@@ -1,5 +1,5 @@
 info:
-  name: Atualizar Pessoa
+  name: Atualizar por ID
   type: http
   seq: 5
 
