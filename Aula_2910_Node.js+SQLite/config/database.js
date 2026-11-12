@@ -1,12 +1,16 @@
 import { Sequelize } from "sequelize";
-import path from "path";
+import "dotenv/config"; 
 
-const dbPath = path.resolve(import.meta.dirname, "../config/sqlite");
-
-const sequelize = new Sequelize({
-    dialect: "sqlite",
-    logging: true,
-    storage: dbPath,
-});
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,
+        dialect: "postgres",
+        port: process.env.DB_PORT,
+        logging: false,
+    }
+);
 
 export default sequelize;

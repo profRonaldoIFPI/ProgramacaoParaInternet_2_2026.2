@@ -1,0 +1,24 @@
+info:
+  name: Atualizar Pessoa
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/pessoas/4
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Vinicius",
+        "email": "vinicius@mail.com",
+        "idade": 21
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

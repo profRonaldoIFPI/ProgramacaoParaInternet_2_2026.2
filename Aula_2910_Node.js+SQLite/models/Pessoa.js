@@ -53,7 +53,7 @@ Pessoa.init(
             }
         },
         {
-            sequelize,
+            sequelize, //config/database.js
             modelName: "Pessoa",
             tableName: "pessoas",
             timestamps: true //adiciona campos "createdAt e updatedAt"
