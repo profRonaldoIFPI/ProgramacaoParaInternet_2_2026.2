@@ -1,0 +1,24 @@
+info:
+  name: Criar pessoa
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:3000/pessoas
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Igor",
+        "idade": 21,
+        "email": "igor2@mail.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
