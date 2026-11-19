@@ -19,7 +19,7 @@ app.get("/", (req, res) => { //HETEOAS
     }
     );
 });
-app.use("/pessoas", router);
+app.use("/pessoas", middlewareDeAutenticacao , router);
 
 //antes apenas colocava o servidor online
 // app.listen(process.env.PORT, () => {
