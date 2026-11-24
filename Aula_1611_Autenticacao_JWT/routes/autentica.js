@@ -2,8 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Usuario from "../models/Usuario.js";
-import { where } from "sequelize";
-import { use } from "react";
+
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -11,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 router.post("/login", async (req, res)=>{
     try{
         const { login , senha } = req.body;
-        if(!login || !senha) { // testa se há campo nulo
+        if(!login || !senha || typeof login !== 'string' || typeof senha !== 'string') { // testa se há campo nulo
             res.status(400); //??
             throw new Error("Credenciais inválidas.");
         }
@@ -59,9 +58,8 @@ router.post("/registrar", async (req, res)=>{
         if(usuario) {
             throw new Error("Nome de usuário já existe.")
         }
-//cria o HASH da senha e cria o registro do usuário
-        const senhaHash = await bcrypt.hash(senha, 10); //
-        const novoUsuario = Usuario.create({login, senhaHash});
+//o HASH da senha é gerando no create(), update() ou save()
+        const novoUsuario = Usuario.create({login, senha});
 //TODO: remover a senha antes de devolver o registro do usuário
         res.status(201).json({
             id: novoUsuario.id,

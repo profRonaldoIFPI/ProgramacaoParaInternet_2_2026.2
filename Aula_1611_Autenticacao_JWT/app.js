@@ -1,8 +1,8 @@
 import express from "express";
 import router from "./routes/pessoaRoutes.js";
 import "dotenv/config";
-
 import sequelize from "./config/database.js"; //faltou isso
+import autentica from "./routes/autentica.js";
 
 const app = express();
 app.use(express.json()); //permite express manipular JSON
@@ -19,6 +19,11 @@ app.get("/", (req, res) => { //HETEOAS
     }
     );
 });
+
+
+app.use("/", autentica); //devolve um token se login correto
+
+// precisa do token para passar do middleware
 app.use("/pessoas", middlewareDeAutenticacao , router);
 
 //antes apenas colocava o servidor online

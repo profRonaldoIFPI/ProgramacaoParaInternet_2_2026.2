@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize"; 
 import sequelize from "../config/database.js";
+import bcrypt from "bcrypt";
 
 class Usuario extends Model{}
 
@@ -26,7 +27,12 @@ Usuario.init(
         sequelize,
         modelName: "Usuario",
         tableName: "usuarios",
-        timestamps: true
+        timestamps: true,
+        hooks: { 
+            beforeSave: async (usuario)=> { // sempre executa antes de create(), update(), save() 
+               usuario.senha = await bcrypt.hash(usuario.senha, 10); 
+            }
+        }
     }
 );
 
