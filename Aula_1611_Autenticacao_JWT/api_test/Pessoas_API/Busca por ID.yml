@@ -5,8 +5,10 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/pessoas/3
-  auth: inherit
+  url: http://localhost:3000/pessoas/34
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzUsImxvZ2luIjoicm9uYWxkbyIsImlhdCI6MTc5NTczNjcwNSwiZXhwIjoxNzk1NzQwMzA1fQ.AL10empPYyO5uVw0J6IEfj9YDnieIcEzTGz0iY9S4oM
 
 settings:
   encodeUrl: true

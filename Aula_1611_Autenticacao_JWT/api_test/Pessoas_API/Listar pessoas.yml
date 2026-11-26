@@ -6,7 +6,9 @@ info:
 http:
   method: GET
   url: http://localhost:3000/pessoas
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzQsImxvZ2luIjoicHJvZlJvbmFsZG8iLCJpYXQiOjE3OTU3MzYwMDksImV4cCI6MTc5NTczOTYwOX0.775CHd2i76vJaiio-7tWN_LbaUr1g9g5hmszyy_8L90
 
 settings:
   encodeUrl: true

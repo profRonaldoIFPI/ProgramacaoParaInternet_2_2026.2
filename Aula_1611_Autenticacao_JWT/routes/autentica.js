@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Usuario from "../models/Usuario.js";
-
+import "dotenv/config";
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -11,24 +11,21 @@ router.post("/login", async (req, res)=>{
     try{
         const { login , senha } = req.body;
         if(!login || !senha || typeof login !== 'string' || typeof senha !== 'string') { // testa se há campo nulo
-            res.status(400); //??
             throw new Error("Credenciais inválidas.");
         }
         const usuario = await Usuario.findOne({where: {login}});
         if (!usuario){
-            res.status(404);
             throw new Error("Usuário inválido ou não localizado.");
         }
 //verificar se a senha da requisição é igual a registro
         const senhaValida = await bcrypt.compare(senha, usuario.senha); 
         if (!senhaValida) {
-            res.status(401); //?
             throw new Error("Senha inválida.");
         }
 //gerando token
         const token = jwt.sign(
             {id: usuario.id, login: usuario.login},
-            env.process.JWT_SECRET,
+            process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
         res.status(200).json({
@@ -36,10 +33,10 @@ router.post("/login", async (req, res)=>{
             token
         });
     }catch(erro){
-        res.json( //?
+        res.status(400).json(
             { 
                 mensagem: "Tente novamente.",
-                detalhes: "Motivo:"+ erro.message
+                detalhes: "Motivo: "+ erro.message
             }
         );
     }
